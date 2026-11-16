@@ -1,136 +1,69 @@
-# ⚡ WinOptima - Windows 11 All-In-One Control Center & Debloater
+# WinOptima
 
-एक सम्पूर्ण, आधुनिक और शक्तिशाली Windows 11 ऑल-इन-वन डेस्कटॉप एप्लिकेशन जिससे आप:
-1. **विंडोज़ की हर सेटिंग को अपनी मर्जी से ON / OFF कर सकते हैं** (Privacy, Telemetry, Copilot, Recall, Classic Context Menu, Taskbar, Gaming tweaks, Update controls).
-2. **सारे प्री-इंस्टॉल्ड ब्लोटवेयर और जंक ऐप्स को 1-क्लिक में हटा सकते हैं** (MSN News, Weather, Candy Crush, Cortana, Skype, Xbox bloat, OneDrive, आदि).
-3. **सिस्टम क्लीनर, रिपेयर टूल्स (SFC, DISM), हाई-स्पीड DNS चेंजर (Cloudflare 1.1.1.1 / Google DNS) और ऑफिशियल सॉफ्टवेयर इंस्टॉलर (Winget)** का उपयोग एक ही जगह से कर सकते हैं — आपको किसी दूसरे फालतू सॉफ्टवेयर की जरूरत नहीं पड़ेगी!
+WinOptima is a lightweight, open-source Windows 11 and Windows 10 desktop application designed to customize system settings, uninstall bloatware, remove temporary cache files, and run standard system maintenance utilities from a single graphical interface.
 
 ---
 
-## 🚀 ऐप को कैसे शुरू करें (How to Run)
+## Features
 
-ऐप को चलाने के 2 बेहद आसान तरीके हैं:
+### 1. System Settings & Privacy Toggles
+WinOptima provides on/off switches for over 30 Windows settings across several categories:
+- **Privacy & Telemetry:** Toggle diagnostic data collection, advertising ID tracking, activity history sync, location services, and error reporting.
+- **Windows Features:** Manage Windows Copilot, Recall snapshot services, Start Menu Bing search suggestions, and taskbar widgets.
+- **Interface & Explorer:** Switch between modern and classic right-click context menus, show or hide file extensions, toggle hidden items, and select taskbar alignment.
+- **Performance & Gaming:** Enable ultimate performance power schemes, turn off Xbox Game DVR background recording, adjust mouse precision settings, and toggle hibernation to manage disk space.
+- **Windows Updates:** Prevent automated graphics driver replacement and disable forced restarts after system updates.
 
-### तरीका 1: 1-क्लिक डेस्कटॉप बैट फाइल (अनुशंसित)
-1. फोल्डर में मौजूद **`Run_WinOptima.bat`** पर डबल-क्लिक करें।
-2. विंडोज़ UAC पॉप-अप आने पर **"Yes"** (Run as Administrator) पर क्लिक करें।
-3. आपकी ऐप तुरंत एक आधुनिक डार्क थीम (Windows 11 Fluent UI) के साथ खुल जाएगी!
+### 2. Application Debloater
+- **Safe Preset:** Removes pre-installed consumer applications (such as casual games, news, weather, and feedback prompts) while preserving core components like Microsoft Store and Calculator.
+- **Gaming Preset:** Disables secondary background services and utilities to reduce background CPU and memory usage.
+- **OneDrive Uninstaller:** Provides an automated routine to uninstall OneDrive and unpin it from File Explorer.
+- **Store Reinstaller:** Re-registers and repairs the official Microsoft Store package if needed.
+- **Custom App Manager:** Scans all installed AppX/UWP packages, allowing you to select and remove specific items.
 
-### तरीका 2: कमांड प्रॉम्प्ट या टर्मिनल से
+### 3. Storage Cleaner
+Scans and removes non-essential temporary data:
+- User temporary folder (`%TEMP%`)
+- Windows system temporary files (`C:\Windows\Temp`)
+- Windows Prefetch cache
+- Windows Update download cache (`SoftwareDistribution\Download`)
+- Crash dump logs and Windows Error Reporting records
+- Empties the Recycle Bin
+
+### 4. System Maintenance & Network Tools
+- **System File Checker (SFC):** Runs `sfc /scannow` to detect and repair corrupted system files.
+- **DISM Health Repair:** Executes `DISM /Online /Cleanup-Image /RestoreHealth` to service Windows image components.
+- **Network Reset:** Flushes the DNS cache, resets Winsock, and refreshes IP configurations.
+- **DNS Configuration:** Switch network adapter DNS servers between Cloudflare (1.1.1.1), Google DNS (8.8.8.8), Quad9 (9.9.9.9), or default DHCP.
+- **Icon Cache Reset:** Rebuilds broken thumbnail and icon databases.
+- **System Restore Point:** Creates a Windows restore checkpoint prior to applying system modifications.
+
+### 5. Package Installer Hub
+Integrates with the official Windows Package Manager (Winget) to install common utilities directly from verified sources:
+- Web browsers (Chrome, Brave, Firefox)
+- System tools (7-Zip, Notepad++, Everything, PowerToys)
+- Media players (VLC, OBS Studio, Spotify)
+- Developer tools (VS Code, Git)
+
+---
+
+## How to Run
+
+### Option 1: Quick Launch
+Double-click the included `Run_WinOptima.bat` file. If prompted by Windows User Account Control (UAC), select "Yes" to provide administrator privileges required for registry and package modifications.
+
+### Option 2: Command Line
 ```powershell
+# Navigate to the project directory
+cd "c:\Users\shiva\Desktop\WIndows !!"
+
+# Run with Python
 python main.py
 ```
 
 ---
 
-## 🌟 मुख्य फीचर्स और सुविधाएं (Key Modules)
-
-### 1. ⚡ Settings & Tweaks (सेटिंग्स और ट्विक्स हब)
-- **31+ से अधिक आवश्यक सेटिंग्स** को अलग-अलग श्रेणियों में ऑन/ऑफ करने के लिए इंटरेक्टिव स्विचेस:
-  - 🛡️ **Privacy & Telemetry:**
-    - विंडोज़ बैकग्राउंड टेलीमेट्री और डेटा कलेक्शन बंद करें
-    - पर्सनलाइज्ड ऐडवरटाइजिंग आईडी और ट्रैकिंग बंद करें
-    - एक्टिविटी हिस्ट्री और क्लाउड टाइमलाइन सिंक बंद करें
-    - लोकेशन सर्विस और बैकग्राउंड सेंसर्स बंद करें
-    - विंडोज़ एरर रिपोर्टिंग (WER) और क्रैश लॉग भेजना बंद करें
-    - बार-बार आने वाले फीडबैक और रेटिंग पॉप-अप बंद करें
-    - कीबोर्ड कीस्ट्रोक्स और टाइपिंग इनसाइट्स लर्निंग बंद करें
-  - 🚀 **OS Bloat & Features:**
-    - विंडोज़ कोपायलट (Microsoft Copilot AI) पूरी तरह बंद करें
-    - विंडोज़ 11 रिकॉल (AI Screen Snapshot Recording) बंद करें
-    - स्टार्ट मेनू में बिंग वेब सर्च बंद करें (सर्च अब केवल लोकल कंप्यूटर की फाइलें तेजी से खोजेगा)
-    - टास्कबार से न्यूज और मौसम (Widgets / News & Interests) हटाएं
-    - बैकग्राउंड में बिना पूछे गेम/ऐप्स (Candy Crush, TikTok आदि) डाउनलोड होना बंद करें
-    - सेटिंग्स और लॉक स्क्रीन पर प्रमोशनल विज्ञापन और टिप्स बंद करें
-    - माइक्रोसॉफ्ट एज (Edge) का बैकग्राउंड में छिपकर चलना बंद करें
-    - टास्कबार से अनचाहा चैट / टीम्स आइकॉन हटाएं
-  - 🎨 **UI & Customization:**
-    - क्लासिक विंडोज़ 10 राइट-क्लिक मेनू (अब कभी 'Show more options' नहीं दबाना पड़ेगा)
-    - सभी फाइलों के असली एक्सटेंशन दिखाएं (.exe, .zip, .txt) वायरस से सुरक्षा के लिए
-    - हिडन (छुपी हुई) फाइलें और फोल्डर्स तुरंत विजिबल करें
-    - टास्कबार को बाईं ओर (Left) या सेंटर में सेट करें
-    - फाइल एक्सप्लोरर को सीधे 'This PC' पर खोलें (Quick Access के बजाय)
-    - स्टिकी कीज (Shift 5 बार दबाने पर आने वाला पॉप-अप) बंद करें
-    - विंडोज़ और सभी ऐप्स के लिए डार्क मोड ऑन/ऑफ करें
-  - ⚡ **Performance & Gaming:**
-    - हिडन 'Ultimate Performance' पावर प्लान सक्रिय करें
-    - Xbox Game DVR बैकग्राउंड रिकॉर्डिंग बंद करें (FPS बूस्ट और स्मूथ गेमिंग)
-    - माउस एक्सेलेरेशन बंद करें (गेमिंग के लिए शुद्ध 1:1 रॉ एम)
-    - डिलीवरी ऑप्टिमाइजेशन (P2P इंटरनेट पर विंडोज़ अपडेट शेयरिंग) बंद करें
-    - हाइबरनेशन बंद करके C-ड्राइव में 8GB से 32GB स्पेस तुरंत खाली करें
-    - विंडो ट्रांसपेरेंसी और अनिमेशंस बंद करके अल्ट्रा-फास्ट रिस्पॉन्स पाएं
-  - 🔄 **Windows Update:**
-    - विंडोज़ अपडेट को आपके नए GPU/डिस्प्ले ड्राइवर बदलने से रोकें
-    - अपडेट के बाद कंप्यूटर का बिना पूछे अपने आप रीस्टार्ट होना बंद करें
-- **विशेषताएं:**
-  - 🔍 **लाइव सर्च बॉक्स:** किसी भी सेटिंग का नाम लिखें (जैसे *telemetry*, *bing*, *copilot*, *context menu*, *gaming*) और तुरंत खोजें।
-  - ⚡ **"Apply Recommended" बटन:** 1-क्लिक में सभी जरूरी सेटिंग्स को ऑप्टिमाइज़ करें।
-  - 🔁 **"Refresh" बटन:** मौजूदा स्थिति तुरंत री-चेक करें।
-
----
-
-### 2. 🗑️ App Debloater (विंडोज़ ऐप्स डीब्लोटर)
-- **1-क्लिक क्विक प्रीसेट्स:**
-  - 🛡️ **Safe Debloat:** Candy Crush, MSN News, Weather, Finance, Sports, Solitaire, Cortana, Tips, Feedback Hub, Maps, Skype, Clipchamp जैसे जंक ऐप्स को 1-क्लिक में हटाता है (Microsoft Store, Calculator, Photos सुरक्षित रहते हैं)।
-  - 🎮 **Gaming Debloat:** गेमर्स के लिए बैकग्राउंड यूसेज खत्म करने वाले ऐप्स का डीब्लोट।
-  - ☁️ **Remove OneDrive:** अगर आप वनड्राइव इस्तेमाल नहीं करते, तो इसे पूरी तरह अनइंस्टॉल करता है और फाइल एक्सप्लोरर साइडबार से हटा देता है।
-  - 🛒 **Reinstall Microsoft Store:** अगर गलती से स्टोर हट गया हो, तो 1-क्लिक में रिपेयर और री-रजिस्टर करता है।
-- **कस्टम ऐप मैनेजर:**
-  - आपके कंप्यूटर में मौजूद सभी UWP पैकेजेस को लाइव स्कैन करता है।
-  - आसान नाम, कैटेगरी, और "BLOATWARE" टैग दिखाता है।
-  - चेकबॉक्स से अपनी पसंद के ऐप चुनकर "Uninstall Selected" दबाएं।
-
----
-
-### 3. 🧹 System Cleaner (सिस्टम जंक और कैशे क्लीनर)
-- आपके कंप्यूटर से गीगाबाइट्स स्पेस खाली करता है:
-  - यूजर टेम्पररी फाइल्स (`%TEMP%`)
-  - विंडोज़ सिस्टम टेम्प (`C:\Windows\Temp`)
-  - प्रीफेच कैशे (`C:\Windows\Prefetch`)
-  - विंडोज़ अपडेट डाउनलोड कैशे (`SoftwareDistribution\Download`)
-  - प्रोग्राम क्रैश डंप्स (`CrashDumps`)
-  - विंडोज़ एरर रिपोर्ट आर्काइव (`WER`)
-  - रीसायकल बिन को सुरक्षित खाली करना
-- **फायदे:** कुल जंक का लाइव साइज (MB/GB) दिखाता है और सेफली क्लीन करता है।
-
----
-
-### 4. 🔧 Windows Toolbox (रिपेयर और मेंटेनेंस टूलबॉक्स)
-- 🛠️ **System File Checker (SFC Scan):** करप्ट सिस्टम फाइलों को स्कैन और रिपेयर करें।
-- 🧩 **DISM Health Repair:** विंडोज़ कोर कंपोनेंट स्टोर को फिक्स करें।
-- 🖼️ **Clear & Rebuild Icon Cache:** डेस्कटॉप या टास्कबार पर खाली/टूटे आइकॉन्स को ठीक करें।
-- 🔄 **Restart Windows Explorer:** सेटिंग्स बदलने के बाद बिना पीसी रीस्टार्ट किए एक्सप्लोरर रीलोड करें।
-- 🌐 **Flush DNS & Reset Network:** इंटरनेट लैग, वेबसाइट न खुलने या नेटवर्क एरर को 1-क्लिक में ठीक करें।
-- ⚡ **High-Speed DNS Switcher:**
-  - Cloudflare DNS (`1.1.1.1` / `1.0.0.1`) — सुपर फास्ट रिस्पॉन्स और गेमिंग पिंग।
-  - Google DNS (`8.8.8.8` / `8.8.4.4`) — हाई रिलायबिलिटी।
-  - Quad9 (`9.9.9.9`) — मैलवेयर ब्लॉकिंग।
-  - Automatic (DHCP) — डिफॉल्ट राउटर सेटिंग्स।
-- 🛡️ **Instant System Restore Point:** किसी भी बदलाव से पहले 1-क्लिक बैकअप बनाएं।
-
----
-
-### 5. 📦 Essential Software Hub (ऑफिशियल विंगेट स्टोर)
-- किसी भी अनजानी या असुरक्षित वेबसाइट पर जाने की जरूरत नहीं!
-- आधिकारिक **Microsoft Windows Package Manager (Winget)** से वेरीफाइड सॉफ्टवेयर 1-क्लिक में बैकग्राउंड में साइलेंटली इंस्टॉल करें:
-  - 🌐 **ब्राउज़र्स:** Google Chrome, Brave Browser, Mozilla Firefox
-  - 📦 **यूटिलिटीज:** 7-Zip, Notepad++, Everything Search, PowerToys, WizTree
-  - 🎬 **मीडिया:** VLC Media Player, OBS Studio, Spotify
-  - 🎮 **गेमिंग और चैट:** Steam, Discord, Epic Games Launcher
-  - 💻 **डेवलपर टूल्स:** VS Code, Git
-
----
-
-### 6. 💻 System Specs (सिस्टम स्पेसिफिकेशन्स)
-- विंडोज़ एडिशन और सटीक बिल्ड नंबर
-- प्रोसेसर (CPU) मॉडल और कोर
-- फिजिकल रैम (RAM) कैपेसिटी और लाइव यूसेज %
-- C: ड्राइव स्टोरेज स्पेस (Free vs Used)
-- एक्टिव ऑप्टिमाइजेशन स्टेटस काउंटर
-
----
-
-## 🔒 सुरक्षा और विश्वसनीयता (Safety First)
-- **100% ओपन-सोर्स और ट्रांसपेरेंट:** कोई छिपा हुआ कोड नहीं, सारा कोड पाइथन में खुला है।
-- **रिवर्सिबल (Reversible):** किसी भी टॉगल को आप कभी भी दोबारा OFF कर सकते हैं।
-- **रीस्टोर पॉइंट सपोर्ट:** बैकअप बनाने का सीधा बटन हमेशा ऊपर मौजूद रहता है।
+## Requirements
+- Windows 10 or Windows 11
+- Python 3.10 or later
+- CustomTkinter library (`pip install customtkinter`)
